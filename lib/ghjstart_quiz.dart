@@ -1,256 +1,237 @@
-
 import 'package:d7/ghjapp_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-List<Map<String,dynamic>> ghjquest =[
-{ 
-   'question' : 'Which of the following is a\npopular activity at Niagara\nFalls Resort?',
-   'image' : 'assets/que/1.png',
-
+List<Map<String, dynamic>> ghjquest = [
+  {
+    'question':
+        'Which of the following is a\npopular activity at Niagara\nFalls Resort?',
+    'image': 'assets/que/1.png',
     'answers': [
       {
-        'answer' : "Zip Lining",
-        'correct' : false,
+        'answer': "Zip Lining",
+        'correct': false,
       },
-       {
-        'answer' : "Whale Watching",
-        'correct' : false,
+      {
+        'answer': "Whale Watching",
+        'correct': false,
       },
-       {
-        'answer' : "Wine Tasting",
-        'correct' : true,
+      {
+        'answer': "Wine Tasting",
+        'correct': true,
       },
-       {
-        'answer' : "Hot Air Ballooning",
-        'correct' : false,
+      {
+        'answer': "Hot Air Ballooning",
+        'correct': false,
       },
-
     ]
-
-},
-
-    { 
-   'question' : 'What is the name of the\ntallest waterfall at Niagara\nFalls?',
- 'image' : 'assets/que/2.png',
+  },
+  {
+    'question': 'What is the name of the\ntallest waterfall at Niagara\nFalls?',
+    'image': 'assets/que/2.png',
     'answers': [
       {
-        'answer' : "Bridal Veil Falls",
-        'correct' : false,
+        'answer': "Bridal Veil Falls",
+        'correct': false,
       },
-       {
-        'answer' : "American Falls",
-        'correct' : false,
+      {
+        'answer': "American Falls",
+        'correct': false,
       },
-       {
-        'answer' : "Angel Falls",
-        'correct' : false,
+      {
+        'answer': "Angel Falls",
+        'correct': false,
       },
-       {
-        'answer' : "Horseshoe Falls",
-        'correct' : true,
+      {
+        'answer': "Horseshoe Falls",
+        'correct': true,
       },
-
     ]
-
-},
- { 
-   'question' : 'Which nearby attraction\noffers panoramic views of\nNiagara Falls?',
- 'image' : 'assets/que/3.png',
+  },
+  {
+    'question':
+        'Which nearby attraction\noffers panoramic views of\nNiagara Falls?',
+    'image': 'assets/que/3.png',
     'answers': [
       {
-        'answer' : "Clifton Hill",
-        'correct' : false,
+        'answer': "Clifton Hill",
+        'correct': false,
       },
-       {
-        'answer' : "Skylon Tower",
-        'correct' : true,
+      {
+        'answer': "Skylon Tower",
+        'correct': true,
       },
-       {
-        'answer' : "Niagara Casino",
-        'correct' : false,
+      {
+        'answer': "Niagara Casino",
+        'correct': false,
       },
-       {
-        'answer' : "Whirlpool Aero Car",
-        'correct' : false,
+      {
+        'answer': "Whirlpool Aero Car",
+        'correct': false,
       },
-
     ]
-
-},
-{ 
-   'question' : 'Which facility is included in\nmany Niagara Falls Resorts\nfor relaxation?',
- 'image' : 'assets/que/4.png',
+  },
+  {
+    'question':
+        'Which facility is included in\nmany Niagara Falls Resorts\nfor relaxation?',
+    'image': 'assets/que/4.png',
     'answers': [
       {
-        'answer' : "Tennis Court",
-        'correct' : false,
+        'answer': "Tennis Court",
+        'correct': false,
       },
-       {
-        'answer' : "Indoor Pool",
-        'correct' : true,
+      {
+        'answer': "Indoor Pool",
+        'correct': true,
       },
-       {
-        'answer' : "Ice Skating Rink",
-        'correct' : false,
+      {
+        'answer': "Ice Skating Rink",
+        'correct': false,
       },
-       {
-        'answer' : "Bowling Alley",
-        'correct' : false,
+      {
+        'answer': "Bowling Alley",
+        'correct': false,
       },
-
     ]
-
-},
-{ 
-   'question' : 'How many waterfalls make\nup Niagara Falls?',
- 'image' : 'assets/que/5.png',
+  },
+  {
+    'question': 'How many waterfalls make\nup Niagara Falls?',
+    'image': 'assets/que/5.png',
     'answers': [
       {
-        'answer' : "3",
-        'correct' : true,
+        'answer': "3",
+        'correct': true,
       },
-       {
-        'answer' : "2",
-        'correct' : false,
+      {
+        'answer': "2",
+        'correct': false,
       },
-       {
-        'answer' : "4",
-        'correct' : false,
+      {
+        'answer': "4",
+        'correct': false,
       },
-       {
-        'answer' : "5",
-        'correct' : false,
+      {
+        'answer': "5",
+        'correct': false,
       },
-
     ]
-
-},
-{ 
-
-   'question' : 'What river flows over Niagara Falls?',
- 'image' : 'assets/que/6.png',
+  },
+  {
+    'question': 'What river flows over Niagara Falls?',
+    'image': 'assets/que/6.png',
     'answers': [
       {
-        'answer' : "Hudson River",
-        'correct' : false,
+        'answer': "Hudson River",
+        'correct': false,
       },
-       {
-        'answer' : "Niagara River",
-        'correct' : true,
+      {
+        'answer': "Niagara River",
+        'correct': true,
       },
-       {
-        'answer' : "Mississippi River",
-        'correct' : false,
+      {
+        'answer': "Mississippi River",
+        'correct': false,
       },
-       {
-        'answer' : "Ohio River",
-        'correct' : false,
+      {
+        'answer': "Ohio River",
+        'correct': false,
       },
-
     ]
-
-},
-{ 
-   'question' : 'Which of these hotels offers a view of both the American and Canadian Falls?',
- 'image' : 'assets/que/7.png',
+  },
+  {
+    'question':
+        'Which of these hotels offers a view of both the American and Canadian Falls?',
+    'image': 'assets/que/7.png',
     'answers': [
       {
-        'answer' : "Crowne Plaza",
-        'correct' : false,
+        'answer': "Crowne Plaza",
+        'correct': false,
       },
-       {
-        'answer' : "The Beverly Hills Hotel",
-        'correct' : true,
+      {
+        'answer': "The Beverly Hills Hotel",
+        'correct': true,
       },
-       {
-        'answer' : "Hilton Niagara Falls",
-        'correct' : false,
+      {
+        'answer': "Hilton Niagara Falls",
+        'correct': false,
       },
-       {
-        'answer' : "Comfort Inn",
-        'correct' : false,
+      {
+        'answer': "Comfort Inn",
+        'correct': false,
       },
-
     ]
-
-}
-,
-{ 
-   'question' : 'Which Niagara Falls activity involves getting up close to the Falls on a boat?',
- 'image' : 'assets/que/8.png',
+  },
+  {
+    'question':
+        'Which Niagara Falls activity involves getting up close to the Falls on a boat?',
+    'image': 'assets/que/8.png',
     'answers': [
       {
-        'answer' : "Niagara City Cruises",
-        'correct' : true,
+        'answer': "Niagara City Cruises",
+        'correct': true,
       },
-       {
-        'answer' : "Niagara SkyWheel",
-        'correct' : false,
+      {
+        'answer': "Niagara SkyWheel",
+        'correct': false,
       },
-       {
-        'answer' : "Niagara SkyWheel",
-        'correct' : false,
+      {
+        'answer': "Niagara SkyWheel",
+        'correct': false,
       },
-       {
-        'answer' : "Whirlpool Jet Boat Tours",
-        'correct' : false,
+      {
+        'answer': "Whirlpool Jet Boat Tours",
+        'correct': false,
       },
-
     ]
-
-},
-
-{ 
-   'question' : 'Which month is Niagara Falls most frequently illuminated by colorful lights?',
- 'image' : 'assets/que/9.png',
+  },
+  {
+    'question':
+        'Which month is Niagara Falls most frequently illuminated by colorful lights?',
+    'image': 'assets/que/9.png',
     'answers': [
       {
-        'answer' : "July",
-        'correct' : false,
+        'answer': "July",
+        'correct': false,
       },
-       {
-        'answer' : "December",
-        'correct' : true,
+      {
+        'answer': "December",
+        'correct': true,
       },
-       {
-        'answer' : "May",
-        'correct' : false,
+      {
+        'answer': "May",
+        'correct': false,
       },
-       {
-        'answer' : "September",
-        'correct' : false,
+      {
+        'answer': "September",
+        'correct': false,
       },
-
     ]
-
-}
-,{ 
-   'question' : 'What country is on the other side of Niagara Falls from Canada?',
- 'image' : 'assets/que/10.png',
+  },
+  {
+    'question':
+        'What country is on the other side of Niagara Falls from Canada?',
+    'image': 'assets/que/10.png',
     'answers': [
       {
-        'answer' : "Mexico",
-        'correct' : false,
+        'answer': "Mexico",
+        'correct': false,
       },
-       {
-        'answer' : "United States",
-        'correct' : true,
+      {
+        'answer': "United States",
+        'correct': true,
       },
-       {
-        'answer' : "France",
-        'correct' : false,
+      {
+        'answer': "France",
+        'correct': false,
       },
-       {
-        'answer' : "United Kingdom",
-        'correct' : false,
+      {
+        'answer': "United Kingdom",
+        'correct': false,
       },
-
     ]
-
-}
-
+  }
 ];
+
 class StartedQuiz extends StatefulWidget {
   const StartedQuiz({super.key});
 
@@ -259,53 +240,45 @@ class StartedQuiz extends StatefulWidget {
 }
 
 class _StartedQuizState extends State<StartedQuiz> {
-
   int ghjcurrentIndex = 0;
   int ghjcorrectAnswered = 0;
-  
 
   @override
   Widget build(BuildContext context) {
-    
-     double ghjwidth = MediaQuery.sizeOf(context).width;
-    
+    double ghjwidth = MediaQuery.sizeOf(context).width;
+
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromRGBO(232, 97, 188, 1),
-            Color.fromRGBO(248, 150, 25, 1)
-          ])
-      ),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            Color(0xff1C5839),
+            Color(0xff16874C),
+          ])),
       child: Scaffold(
-        
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-         leadingWidth: 126,
-       leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: GestureDetector(
+          leadingWidth: 126,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: GestureDetector(
               onTap: () => Navigator.pop(context),
-            child: Row(
-              children: [
-                Icon(Icons.arrow_back_ios, color:
-                 Colors.white),
-                
-                Text(
-              'Back',
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color:    Colors.white,
+              child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios, color: Colors.white),
+                  Text(
+                    'Back',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-              ],
-            ),
           ),
-        ),
         ),
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -313,22 +286,25 @@ class _StartedQuizState extends State<StartedQuiz> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-            
-            
-              
               children: [
-                Image.asset(ghjquest[ghjcurrentIndex]['image'],
+                Image.asset(
+                  ghjquest[ghjcurrentIndex]['image'],
                   fit: BoxFit.fill,
                 ),
-             ghjwidth >= 700 ?   SizedBox(height: 50,) : SizedBox.shrink(),
+                ghjwidth >= 700
+                    ? SizedBox(
+                        height: 50,
+                      )
+                    : SizedBox.shrink(),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
-                    color: Colors.white,
+                    color: const Color(0xff022D21),
                   ),
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 15),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 40, horizontal: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -338,7 +314,7 @@ class _StartedQuizState extends State<StartedQuiz> {
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -348,11 +324,10 @@ class _StartedQuizState extends State<StartedQuiz> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                     
                 Expanded(
                   flex: 4,
                   child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 4,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -364,7 +339,8 @@ class _StartedQuizState extends State<StartedQuiz> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          if (ghjquest[ghjcurrentIndex]['answers'][index]['correct']) {
+                          if (ghjquest[ghjcurrentIndex]['answers'][index]
+                              ['correct']) {
                             ghjcorrectAnswered += 1;
                           }
                           if (ghjcurrentIndex != 9) {
@@ -378,14 +354,15 @@ class _StartedQuizState extends State<StartedQuiz> {
                         child: Container(
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: const Color(0xff022D21),
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: Text(
-                            ghjquest[ghjcurrentIndex]['answers'][index]['answer'],
+                            ghjquest[ghjcurrentIndex]['answers'][index]
+                                ['answer'],
                             textAlign: TextAlign.center,
                             style: GoogleFonts.inter(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
@@ -396,12 +373,16 @@ class _StartedQuizState extends State<StartedQuiz> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Questions : ${ghjcurrentIndex+1} / 10',style: GoogleFonts.inter(fontWeight: 
-                    FontWeight.w700,fontSize: 16),),
+                    Text(
+                      'Questions : ${ghjcurrentIndex + 1} / 10',
+                      style: GoogleFonts.inter(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -413,7 +394,6 @@ class _StartedQuizState extends State<StartedQuiz> {
     );
   }
 
-  
   void _ghjshowResultDialog(BuildContext context) {
     String resultMessage = ghjcorrectAnswered == 10 ? 'You win' : 'You Lose';
     showDialog(
@@ -424,7 +404,7 @@ class _StartedQuizState extends State<StartedQuiz> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xff022D21),
           child: Padding(
             padding: const EdgeInsets.all(50.0),
             child: Column(
@@ -433,7 +413,7 @@ class _StartedQuizState extends State<StartedQuiz> {
                 Text(
                   resultMessage,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                   ),
@@ -456,7 +436,7 @@ class _StartedQuizState extends State<StartedQuiz> {
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w800,
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ),

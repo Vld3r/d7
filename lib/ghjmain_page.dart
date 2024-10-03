@@ -24,7 +24,7 @@ class ghjMainPage extends StatefulWidget {
 
 class _ghjMainPageState extends State<ghjMainPage> {
   int _ghjselectedIndex = 0;
-  
+
   void _ghjonItemTappedIcon(int index) {
     setState(() {
       _ghjselectedIndex = index;
@@ -35,377 +35,441 @@ class _ghjMainPageState extends State<ghjMainPage> {
     SizedBox.shrink(),
     ghjHotelsPage(),
     ghjfactsPage(),
-
-       ghjPlacesPage(),
-        QuizPage(),
+    ghjPlacesPage(),
+    QuizPage(),
   ];
   @override
   Widget build(BuildContext context) {
-     double ghjwidth = MediaQuery.sizeOf(context).width;
+    double ghjwidth = MediaQuery.sizeOf(context).width;
 
-  final List ghjdecodedBody = jsonDecode(getIt.get<ghjDataProvider>()
-  .prefs.getStringList('hotels')!.toString())  ;
+    final List ghjdecodedBody = jsonDecode(
+        getIt.get<ghjDataProvider>().prefs.getStringList('hotels')!.toString());
     return Scaffold(
-       appBar:
-     _ghjselectedIndex == 0 ?     AppBar(
-        title: Text('What do you \nwant to do?'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10,top: 10),
-            child: GestureDetector(
-              onTap: (){
-                Navigator.push(context, 
-                CupertinoPageRoute(builder: (context)=> SettingsPage()));
-              },
-              child: Container(
-                
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color.fromRGBO(255, 255, 255, 1)
-                
+      backgroundColor: const Color(0xff022D21),
+      appBar: _ghjselectedIndex == 0
+          ? AppBar(
+              title: const Text(
+                'What do you \nwant to do?',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SvgPicture.asset('assets/settings.svg'),
-              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, top: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => SettingsPage()));
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xffFFE83A),
                       ),
-            ),
-          )],
-      ): null,
-      
-      body:
-
-      _ghjselectedIndex == 0 ?
-      SingleChildScrollView
-      (child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10,),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text('Popular Hotels',style: GoogleFonts.inter(
-              
-                  fontWeight: FontWeight.w800,
-                    fontSize: 20,
-                ),),
-                InkWell(
-                  onTap: (){
-                    setState(() {
-                      _ghjselectedIndex
-                      =1;
-                    });
-                    
-                  },
-                  child: Text('View All',style: GoogleFonts.inter(
-                  color: mainColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14
-                )),),
-              ],),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              height: 250,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-               
-                itemBuilder: (context,index){
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: GestureDetector(
-                      onTap: (){
-                      
-                         Navigator.push(context, 
-                       CupertinoPageRoute(builder: (context)=>
-                       SelectedHotel(indexOfHotel: index,)));
-                      },
-                      child: Container(
-                        height: 240,
-                        width: 165,
-                        child: 
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                                Row(
-                                children: [
-                               
-                                     Expanded(
-                                       child: Text(ghjhotels[index]['title'],
-                                                                         
-                                       overflow: TextOverflow.fade,
-                                       
-                                                                   style:
-                                       GoogleFonts.inter(
-                                         
-                                       fontWeight: FontWeight.w800,
-                                       color: Colors.white,
-                                       fontSize: 16),),
-                                     ),
-                      
-                                ],
-                              ),
-                              SizedBox(height: 5,),
-                              Row(
-                                children: [
-                                    SvgPicture.asset('assets/loc.svg'),
-                                    SizedBox(width: 5,),
-                                     Text('Falls Avenue',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
-                                fontSize: 13),),
-                      
-                                ],
-                              ),
-                              SizedBox(height: 5,),
-                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                              Text('\$${ghjhotels[index]['price']} / night',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 13),),
-                      
-                                Row(children: [
-                                  SvgPicture.asset('assets/star.svg'),
-                                  SizedBox(width: 5,),
-                                   Text('${(ghjhotels[index]['rating']+(
-                                    ghjdecodedBody[index]['rate']/100))
-                                    .toStringAsFixed(2)}',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 13),),
-                                 
-                      
-                                ],)
-                             ],)   
-                          ],),
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(0, 0, 0, 0),
-                                Color.fromRGBO(0, 0, 0, 0.5),
-                              
-                            ]),
-                            image: DecorationImage(image: 
-                            AssetImage(ghjhotels[index]['images'][0]),
-                            fit: BoxFit.fitHeight
-                            ,opacity: 0.9
-                            
-                            )
-                        ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset('assets/settings.svg'),
                       ),
                     ),
-                  );
-              }, separatorBuilder: (context,index){
-                  return SizedBox(width: 5,);
-              }, itemCount: ghjhotels.length),
-            ),
-             SizedBox(height: 10,),
-
-             Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 10),
-               child: GestureDetector(
-                onTap: (){
-                 setState(() {
-                   _ghjselectedIndex = 2;
-                 });
-                },
-                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                 
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [Color.fromRGBO(0, 136, 255, 1),Color.fromRGBO(184, 155, 255, 1)])
                   ),
-                  child: Padding(padding: EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      Row(children: [
-                         Container(
-                  
-                             decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color.fromRGBO(255, 255, 255, 0.48 )
-                  
-                             ),
-                             child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SvgPicture.asset('assets/nav_bar/2.svg',color: Colors.white,),
-                             ),
-                        ),
-                      SizedBox(width: 10,),
-                        Text('Facts',style: GoogleFonts.inter(fontWeight: FontWeight.w800,color:
-                         Colors.white,fontSize: 16),)
-                      ],),
-                      SizedBox(height: 20,),
-                 
-                      Row(
-                        children: [
-                          Text('Interesting and unusual facts\nthat will be useful to you',
+                )
+              ],
+            )
+          : null,
+      body: _ghjselectedIndex == 0
+          ? SingleChildScrollView(
+              child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular Hotels',
                           style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20,
                             color: Colors.white,
-                            fontSize: 14
-                          ),),
-                        ],
-                      )
-                    ],
-                  ),),
-                 ),
-               ),
-             ),
-             SizedBox(height: 10,),
-
-                 SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                   child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                                  child: Row(
-                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     GestureDetector(
-                      onTap: (){
-                          setState(() {
-                   _ghjselectedIndex = 3;
-                 });
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              _ghjselectedIndex = 1;
+                            });
+                          },
+                          child: Text('View All',
+                              style: GoogleFonts.inter(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14)),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 250,
+                    child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => SelectedHotel(
+                                              indexOfHotel: index,
+                                            )));
+                              },
+                              child: Container(
+                                height: 240,
+                                width: 165,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color.fromRGBO(0, 0, 0, 0),
+                                          Color.fromRGBO(0, 0, 0, 0.5),
+                                        ]),
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            ghjhotels[index]['images'][0]),
+                                        fit: BoxFit.fitHeight,
+                                        opacity: 0.9)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              ghjhotels[index]['title'],
+                                              overflow: TextOverflow.fade,
+                                              style: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.w800,
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                            'assets/loc.svg',
+                                            color: const Color(0xffFFE83A),
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            'Falls Avenue',
+                                            style: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white,
+                                                fontSize: 13),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '\$${ghjhotels[index]['price']} / night',
+                                            style: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                                fontSize: 13),
+                                          ),
+                                          Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                  'assets/star.svg'),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                '${(ghjhotels[index]['rating'] + (ghjdecodedBody[index]['rate'] / 100)).toStringAsFixed(2)}',
+                                                style: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white,
+                                                    fontSize: 13),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(
+                            width: 5,
+                          );
+                        },
+                        itemCount: ghjhotels.length),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _ghjselectedIndex = 2;
+                        });
                       },
-                       
-                         child: Container(
-                          width: ghjwidth/2-12.5,
-                          height:180,
-                          decoration: BoxDecoration(
+                      child: Container(
+                        decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             gradient: LinearGradient(
-                         
-                             begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Color.fromRGBO(182,166,214,1),
-                              Color.fromRGBO(156, 106, 255, 1)])
-                          ),
-                          child: Padding(padding: EdgeInsets.all(15),
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xff317713),
+                                  Color(0xff279B4C)
+                                ])),
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
                           child: Column(
                             children: [
                               Row(
-                                
                                 children: [
-                                 Container(
-                          
-                                     decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color.fromRGBO(255, 255, 255, 0.48 )
-                          
-                                     ),
-                                     child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: SvgPicture.asset('assets/nav_bar/1.svg',color: Colors.white,),
-                                     ),
-                                ),
-                              SizedBox(width: 10,),
-                                Text('Places',style: GoogleFonts.inter(fontWeight: FontWeight.w800,color:
-                                 Colors.white,fontSize: 16),)
-                              ],),
-                              SizedBox(height: 20,),
-                         
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xffFFE83A)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: SvgPicture.asset(
+                                        'assets/nav_bar/2.svg',
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    'Facts',
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white,
+                                        fontSize: 16),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
                               Row(
                                 children: [
-                                  Expanded(
-                                    child: Text('Interesting places and attractions worth visiting',
+                                  Text(
+                                    'Interesting and unusual facts\nthat will be useful to you',
                                     style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white,
-                                      fontSize: 14
-                                    ),),
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white,
+                                        fontSize: 14),
                                   ),
                                 ],
                               )
                             ],
-                          ),),
-                         ),
-                       
-                     ),
-                     SizedBox(width: 5,),
-                      GestureDetector(
-                        onTap: (){
-                              setState(() {
-                   _ghjselectedIndex = 4;
-                 });
-                        },
-                        child: Container(
-                           width: ghjwidth/2 -12.5,
-                        height:180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                                           
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Color.fromRGBO(231, 94, 196, 1),Color.fromRGBO(248, 150, 23, 1)])
+                          ),
                         ),
-                        child: Padding(padding: EdgeInsets.all(15),
-                        child: Column(
-                          children: [
-                            Row(children: [
-                               Container(
-                        
-                                   decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromRGBO(255, 255, 255, 0.48 )
-                        
-                                   ),
-                                   child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: SvgPicture.asset('assets/nav_bar/4.svg',color: Colors.white,),
-                                   ),
-                              ),
-                            SizedBox(width: 10,),
-                              Text('Quiz',style: GoogleFonts.inter(fontWeight: FontWeight.w800,color:
-                               Colors.white,fontSize: 16),)
-                            ],),
-                            SizedBox(height: 20,),
-                                           
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text('Take an interesting quiz and find out your capabilities',
-                                  style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white,
-                                    fontSize: 14
-                                  ),),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),),
-                                           ),
                       ),
-                   ],
-                                  ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _ghjselectedIndex = 3;
+                              });
+                            },
+                            child: Container(
+                              width: ghjwidth / 2 - 12.5,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xff7EAD34),
+                                        Color(0xffFFBC6A)
+                                      ])),
+                              child: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color(0xffFFE83A)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SvgPicture.asset(
+                                              'assets/nav_bar/1.svg',
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Places',
+                                          style: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w800,
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            'Interesting places and attractions worth visiting',
+                                            style: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white,
+                                                fontSize: 14),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
-                 )
-          ],
-        ),
-      )):
-
-
-       ghjpages.elementAt(_ghjselectedIndex),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _ghjselectedIndex = 4;
+                              });
+                            },
+                            child: Container(
+                              width: ghjwidth / 2 - 12.5,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xff71992B),
+                                        Color(0xff0DA97B)
+                                      ])),
+                              child: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color(0xffFFE83A)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: SvgPicture.asset(
+                                              'assets/nav_bar/4.svg',
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Quiz',
+                                          style: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w800,
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            'Take an interesting quiz and find out your capabilities',
+                                            style: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white,
+                                                fontSize: 14),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ))
+          : ghjpages.elementAt(_ghjselectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        backgroundColor: const Color(0xff1C5839),
         showSelectedLabels: false,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
@@ -418,21 +482,29 @@ class _ghjMainPageState extends State<ghjMainPage> {
             ),
             icon: SvgPicture.asset(
               'assets/nav_bar/3.svg',
+              color: Colors.white,
               height: 30,
-            
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset('assets/nav_bar/5.svg',
                 height: 30, color: mainColor),
-            icon: SvgPicture.asset('assets/nav_bar/5.svg', height: 30),
+            icon: SvgPicture.asset(
+              'assets/nav_bar/5.svg',
+              height: 30,
+              color: Colors.white,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset('assets/nav_bar/2.svg',
                 height: 30, color: mainColor),
-            icon: SvgPicture.asset('assets/nav_bar/2.svg', height: 30),
+            icon: SvgPicture.asset(
+              'assets/nav_bar/2.svg',
+              height: 30,
+              color: Colors.white,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -441,8 +513,11 @@ class _ghjMainPageState extends State<ghjMainPage> {
               height: 30,
               color: mainColor,
             ),
-            icon: SvgPicture.asset('assets/nav_bar/1.svg',
-                height: 30),
+            icon: SvgPicture.asset(
+              'assets/nav_bar/1.svg',
+              height: 30,
+              color: Colors.white,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -451,16 +526,17 @@ class _ghjMainPageState extends State<ghjMainPage> {
               height: 30,
               color: mainColor,
             ),
-            icon: SvgPicture.asset('assets/nav_bar/4.svg',
-                height: 30),
+            icon: SvgPicture.asset(
+              'assets/nav_bar/4.svg',
+              height: 30,
+              color: Colors.white,
+            ),
             label: '',
           ),
         ],
         currentIndex: _ghjselectedIndex,
         onTap: _ghjonItemTappedIcon,
-      
       ),
-      
     );
   }
 }

@@ -1,19 +1,16 @@
-
-
-
-
 import 'package:d7/ghjapp_theme.dart';
 import 'package:d7/ghjmain_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(36, 66, 139, 1),
+      backgroundColor: const Color(0xff022D21),
       body: SafeArea(
         child: SingleChildScrollView(
           child: ConstrainedBox(
@@ -43,7 +40,7 @@ class OnBoardingPage extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
-                      color: const Color.fromRGBO(76, 133, 149, 1),
+                      color: const Color(0xffA6F0B5),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -60,7 +57,7 @@ class OnBoardingPage extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontWeight: FontWeight.w800,
                             fontSize: 18,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         onPressed: () {
