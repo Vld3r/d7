@@ -292,6 +292,8 @@ class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixi
   late final AnimationController _ghjncontroller;
   bool ghjIsLoce = false;
 
+  String ghyloadedLink = '';
+
   @override
   void initState() {
     super.initState();
@@ -308,6 +310,7 @@ class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixi
       ..setNavigationDelegate(
         NavigationDelegate(
             onPageStarted: (String url) async {
+              ghyloadedLink = url;
               SystemChrome.setPreferredOrientations([
                 DeviceOrientation.portraitUp,
                 DeviceOrientation.landscapeLeft,
@@ -317,7 +320,7 @@ class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixi
             },
             onPageFinished: (String url) async {
               //print('$url and $ghjLifeUuc}');
-              if (url == ghjLifeUuc){
+              if (url == ghyloadedLink){
                 bool firstTime = await getIt.get<ghjDataProvider>().firstTimeVisited();
                 Navigator.pushReplacement(
                   context,
